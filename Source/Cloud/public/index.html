@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cloud</title>
+    <link rel="icon" type="image/png" href="c1.png">
+    <link rel="stylesheet" href="new.css">
+</head>
+
+<body>
+    <video autoplay muted loop playsinline id="bg-video" disablePictureInPicture>
+        <source src="clouds.mp4" type="video/mp4">
+    </video>
+    
+    <header class="app-header">
+        <div class="header-content">
+            <div class="header-branding">
+                <img src="logo.svg" class="app-logo" alt="Logo">
+                <h1 class="shimmer-title">Stratosphere</h1>
+            </div>
+            <div class="header-status-badge">
+                <span class="pulse-dot"></span>
+                Cloud Active
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard-wrapper">
+
+        <section class="upload-container standard-card">
+            <div class="upload-stack-layout">
+                <div class="picker-row">
+                    <input type="file" id="fileInput" multiple hidden>
+                    <label for="fileInput" class="TEST2">
+                        <img src="folder.png" height="30px" alt="Browse">
+                    </label>
+                    <span id="fileName" class="TEST3">No File Chosen</span>
+                </div>
+
+                <div class="action-row">
+                    <button id="uploadBtn" onclick="uploadFile()">
+                        <img src="up.png" height="30px" alt="Upload">
+                    </button>
+                    <div class="progress-wrapper">
+                        <progress id="progressBar" value="0" max="100"></progress>
+                        <span id="percent">0%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="TEST4 standard-card">
+            <h2>~ Files ~</h2>
+            <ul id="fileList"></ul>
+        </section>
+
+        <section class="TEST5 standard-card">
+            <h1>~ Text ~</h1>
+            <textarea id="fileContent" spellcheck="false" placeholder="Type plain text content here..."></textarea>
+            <button class="action-save-btn" id="saveBtn">SAVE CHANGES</button>
+            <div id="textSaved" class="status-msg"></div>
+        </section>
+
+        <section class="TEST5 standard-card">
+            <h1>~ Pocket ~</h1>
+            <div id="editor" contenteditable="true" placeholder="Drop rich data or write structural nodes here..."></div>
+            <button class="action-save-btn" id="saveBtn2">SAVE CHANGES</button>
+            <div id="pocketSaved" class="status-msg"></div>
+        </section>
+
+    </main>
+
+    <script>
+        // Synchronous file picker state display management
+        const input = document.getElementById("fileInput");
+        const fileName = document.getElementById("fileName");
+
+        input.addEventListener("change", () => {
+            const count = input.files.length;
+            if (count === 1) {
+                fileName.textContent = input.files[0].name;
+            } else if (count > 1) {
+                fileName.textContent = `${count} files selected`;
+            } else {
+                fileName.textContent = "No File Chosen";
+            }
+        });
+
+        // Clipboard Rich Image Sniffer Strategy
+        const editor = document.getElementById("editor");
+        editor.addEventListener("copy", (e) => {
+            const sel = window.getSelection();
+            if (!sel.rangeCount) return;
+            const range = sel.getRangeAt(0);
+            const fragment = range.cloneContents();
+            const img = fragment.querySelector("img");
+            if (img) {
+                e.preventDefault();
+                fetch(img.src)
+                .then(r => r.blob())
+                .then(blob => {
+                    const item = new ClipboardItem({ [blob.type]: blob });
+                    navigator.clipboard.write([item]);
+                });
+            }
+        });
+
+        // Notification Message Status Engine
+        function displayStatus(elementId, text, isSuccess) {
+            const msgElement = document.getElementById(elementId);
+            msgElement.innerText = text;
+            msgElement.style.color = isSuccess ? "#00f2fe" : "#ef4444";
+            msgElement.classList.add("show");
+            
+            setTimeout(() => {
+                msgElement.classList.remove("show");
+            }, 2500);
+        }
+
+        // --- POCKET REPOSITORY MANAGEMENT ---
+        document.getElementById("saveBtn2").addEventListener("click", () => {
+            // FIX: Clean the raw innerHTML to prevent string escape crashes during line breaks/enters
+            const dirtyHtml = editor.innerHTML;
+            
+            fetch("/pocket", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ html: dirtyHtml })
+            })
+            .then(res => {
+                if (!res.ok) throw new Error();
+                displayStatus("pocketSaved", "Saved Successfully !!!", true);
+            })
+            .catch(err => {
+                displayStatus("pocketSaved", "Failed to save pocket data.", false);
+            });
+        });
+
+        fetch("/pocket")
+            .then(r => r.text())
+            .then(data => { editor.innerHTML = data; });
+
+        // --- TEXT RUNTIME DATA PIPELINE ---
+        fetch("/text")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("fileContent").value = data;
+            })
+            .catch(err => console.error(err));
+
+        document.getElementById("saveBtn").addEventListener("click", () => {
+            const newText = document.getElementById("fileContent").value;
+            fetch("/text", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ text: newText })
+            })
+            .then(res => {
+                if (!res.ok) throw new Error();
+                displayStatus("textSaved", "Saved Successfully !!!", true);
+            })
+            .catch(err => {
+                displayStatus("textSaved", "Failed to save text content.", false);
+            });
+        });
+
+        // --- FILE STORAGE TRANSLATION PIPELINE ---
+        function uploadFile() {
+            const fileInput = document.getElementById("fileInput");
+            const progressBar = document.getElementById("progressBar");
+            const percentText = document.getElementById("percent");
+
+            if (!fileInput.files.length) {
+                alert("Choose a file");
+                return;
+            }
+
+            const formData = new FormData();
+            for (let i = 0; i < fileInput.files.length; i++) {
+                formData.append("files", fileInput.files[i]);
+            }
+
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "/upload");
+
+            xhr.upload.onprogress = function (e) {
+                if (e.lengthComputable) {
+                    const percent = Math.round((e.loaded / e.total) * 100);
+                    progressBar.value = percent;
+                    percentText.innerText = percent + "%";
+                }
+            };
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    progressBar.value = 100;
+                    percentText.innerText = "Done ✔";
+                    loadFiles();
+                } else {
+                    alert("Upload failed");
+                }
+            };
+
+            xhr.onerror = function () {
+                alert("Upload error");
+            };
+
+            progressBar.value = 0;
+            percentText.innerText = "0%";
+            xhr.send(formData);
+        }
+
+        async function loadFiles() {
+            const res = await fetch("/files");
+            const files = await res.json();
+            const list = document.getElementById("fileList");
+            list.innerHTML = "";
+
+            files.forEach(fileObj => {
+                const li = document.createElement("li");
+                li.innerHTML = `<a href="/download/${encodeURIComponent(fileObj.realName)}">${fileObj.displayName}</a>`;
+                list.appendChild(li);
+            });
+        }
+
+        loadFiles();
+    </script>
+</body>
+</html>

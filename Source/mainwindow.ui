@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1100</width>
+    <height>680</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">.QWidget {
+    background-color: white;
+    
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>256</width>
+      <height>680</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+border-image: url(:/files/GUI/side.png) 0 0 0 0 stretch;
+border-width: 0px;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_6">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>240</y>
+      <width>255</width>
+      <height>56</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#pushButton_6:checked{
+border-image: url(:/files/GUI/main_C.png) 0 0 0 0;
+border-width: 0px;
+}
+#pushButton_6{
+border-image: url(:/files/GUI/main_A.png) 0 0 0 0 stretch;
+border-width: 0px;
+}
+#pushButton_6:hover{
+border-image: url(:/files/GUI/main_B.png) 0 0 0 0 stretch;
+border-width: 0px;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_7">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>300</y>
+      <width>255</width>
+      <height>56</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#pushButton_7:checked{
+border-image: url(:/files/GUI/text_C.png)  0 0 0 0 stretch;
+border-width: 0px;
+}
+#pushButton_7{
+border-image: url(:/files/GUI/text_A.png) 0 0 0 0 stretch;
+border-width: 0px;
+}
+#pushButton_7:hover{
+border-image: url(:/files/GUI/text_B.png) 0 0 0 0 stretch;
+border-width: 0px;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>0</y>
+      <width>841</width>
+      <height>680</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>2</number>
+    </property>
+    <widget class="QWidget" name="page_7">
+     <widget class="QLabel" name="label_13">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>10</y>
+        <width>298</width>
+        <height>234</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/files/GUI/status.png) 0 0 0 0 stretch;
+border-width: 0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_14">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>10</y>
+        <width>478</width>
+        <height>234</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/files/GUI/main.png) 0 0 0 0 stretch;
+border-width: 0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_22">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>260</y>
+        <width>187</width>
+        <height>144</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    border-image: url(:/files/GUI/delete.png) 0 0 0 0 stretch;
+    border-width: 0px;
+}
+
+QPushButton:hover {
+ border-image: url(://GUI/hover/delete.png) 0 0 0 0 stretch;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_23">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>260</y>
+        <width>187</width>
+        <height>144</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    border-image: url(:/files/GUI/browse.png) 0 0 0 0 stretch;
+    border-width: 0px;
+}
+
+QPushButton:hover {
+ border-image: url(://GUI/hover/browse.png) 0 0 0 0 stretch;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_24">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>260</y>
+        <width>187</width>
+        <height>144</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    border-image: url(:/files/GUI/hide.png) 0 0 0 0 stretch;
+    border-width: 0px;
+}
+
+QPushButton:hover {
+ border-image: url(://GUI/hover/hide.png) 0 0 0 0 stretch;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_25">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>260</y>
+        <width>187</width>
+        <height>144</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    border-image: url(:/files/GUI/folder.png) 0 0 0 0 stretch;
+    border-width: 0px;
+}
+
+QPushButton:hover {
+ border-image: url(://GUI/hover/folder.png) 0 0 0 0 stretch;
+
+}
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_26">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>148</y>
+        <width>126</width>
+        <height>48</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">#pushButton_26:checked{
+border-image: url(:/files/GUI/off.png) 0 0 0 0 stretch;
+border-width: 0px;
+}
+#pushButton_26:checked:hover{
+border-image: url(://GUI/hover/off.png) 0 0 0 0 stretch;
+}
+
+#pushButton_26{
+border-image: url(:/files/GUI/on.png) 0 0 0 0  stretch;
+border-width: 0px;
+}
+#pushButton_26::hover{
+border-image: url(://GUI/hover/on.png) 0 0 0 0 stretch;
+}
+
+
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QTableView" name="tableView">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>420</y>
+        <width>770</width>
+        <height>240</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QTableView{
+    selection-background-color: black;                   
+	background-color:white; 
+	padding: 20px;
+	color:#1e293b;
+	outline: none;
+	
+	border: 2px solid #e2e8f0;
+    border-radius: 30px;                 
+}
+
+QTableView::item:selected {
+    background-color: #e2e8f0;
+	color:#1e293b;
+}
+
+QHeaderView::section
+{
+    background-color: white;
+	color:#1e293b;
+	text-align:center;
+	border:none;
+
+font-family: &quot;Segoe UI&quot;; 
+font-size: 14px; 
+font-weight:bold;
+}</string>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+      </property>
+      <property name="dragEnabled">
+       <bool>true</bool>
+      </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
+      </property>
+      <property name="showGrid">
+       <bool>false</bool>
+      </property>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>570</x>
+        <y>80</y>
+        <width>201</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">	color:#1e293b;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>570</x>
+        <y>140</y>
+        <width>201</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">	color:#1e293b;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>570</x>
+        <y>91</y>
+        <width>18</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/files/GUI/red_ball.png) 0 0 0 0 stretch;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_8">
+     <widget class="QTextEdit" name="textEdit">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>100</y>
+        <width>721</width>
+        <height>531</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QTextEdit {
+    background-color: white;        
+    border: 2px solid #e2e8f0;
+    border-radius: 25px;      
+    color: #ffffff;                  
+    padding: 20px;                    
+	color:#1e293b;
+}
+
+
+QTextEdit:focus {
+    border: 2px solid #005a9e;    
+}</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>30</y>
+        <width>721</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">	color:#1e293b;</string>
+      </property>
+      <property name="text">
+       <string>Text</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page">
+     <widget class="QTextEdit" name="textEdit_2">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>100</y>
+        <width>721</width>
+        <height>481</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QTextEdit {
+    background-color: white;        
+    border: 2px solid #e2e8f0;
+    border-radius: 25px;      
+    color: #ffffff;                  
+    padding: 20px;                    
+	color:#1e293b;
+}
+
+
+QTextEdit:focus {
+    border: 2px solid #005a9e;    
+}</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>30</y>
+        <width>721</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">	color:#1e293b;</string>
+      </property>
+      <property name="text">
+       <string>Pocket</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_27">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>598</y>
+        <width>188</width>
+        <height>73</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    border-image: url(:/files/GUI/save_A.png) 0 0 0 0 stretch;
+    border-width: 0px;
+}
+
+QPushButton:hover {
+ border-image: url(:/files/GUI/hover/save.png) 0 0 0 0 stretch;
+}
+QPushButton:pressed {
+    border-image: url(:/files/GUI/save_B2.png) 0 0 0 0 stretch;
+ border-width: 0px;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_28">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>598</y>
+        <width>208</width>
+        <height>73</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    border-image: url(:/files/GUI/open.png) 0 0 0 0 stretch;
+    border-width: 0px;
+}
+
+QPushButton:hover {
+ border-image: url(:/files/GUI/hover/open.png) 0 0 0 0 stretch;
+}
+QPushButton:pressed {
+    border-image: url(:/files/GUI/open_B.png) 0 0 0 0 stretch;
+ border-width: 0px;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="pushButton_8">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>360</y>
+      <width>255</width>
+      <height>56</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#pushButton_8:checked{
+border-image: url(:/files/GUI/pocket_C.png)  0 0 0 0 stretch;
+border-width: 0px;
+}
+#pushButton_8{
+border-image: url(:/files/GUI/pocket_A.png) 0 0 0 0 stretch;
+border-width: 0px;
+}
+#pushButton_8:hover{
+border-image: url(:/files/GUI/pocket_B2.png) 0 0 0 0 stretch;
+border-width: 0px;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
